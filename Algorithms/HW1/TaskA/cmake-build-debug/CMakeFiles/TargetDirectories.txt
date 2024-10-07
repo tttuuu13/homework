@@ -1,0 +1,3 @@
+/Users/timur/hse/Algorithms/HW1/TaskA/cmake-build-debug/CMakeFiles/TaskA.dir
+/Users/timur/hse/Algorithms/HW1/TaskA/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/timur/hse/Algorithms/HW1/TaskA/cmake-build-debug/CMakeFiles/rebuild_cache.dir

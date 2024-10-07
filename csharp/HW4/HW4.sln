@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW4", "HW4.csproj", "{3FDDDE58-76AF-4CCC-BB51-3D658E7A8062}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{D30B0CC4-4ECD-40E5-984A-086223B057A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuScreens", "MenuScreens\MenuScreens.csproj", "{C8DCF498-BC07-4C47-832F-69958CF8A320}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FDDDE58-76AF-4CCC-BB51-3D658E7A8062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FDDDE58-76AF-4CCC-BB51-3D658E7A8062}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FDDDE58-76AF-4CCC-BB51-3D658E7A8062}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FDDDE58-76AF-4CCC-BB51-3D658E7A8062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D30B0CC4-4ECD-40E5-984A-086223B057A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D30B0CC4-4ECD-40E5-984A-086223B057A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D30B0CC4-4ECD-40E5-984A-086223B057A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D30B0CC4-4ECD-40E5-984A-086223B057A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8DCF498-BC07-4C47-832F-69958CF8A320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8DCF498-BC07-4C47-832F-69958CF8A320}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8DCF498-BC07-4C47-832F-69958CF8A320}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8DCF498-BC07-4C47-832F-69958CF8A320}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

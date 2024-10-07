@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW6", "HW6.csproj", "{412097CD-E3F6-4F2F-AEA4-AE33FAD34ADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{A2405B33-50BB-4C4D-AA54-1E411AA2B68E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{412097CD-E3F6-4F2F-AEA4-AE33FAD34ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{412097CD-E3F6-4F2F-AEA4-AE33FAD34ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{412097CD-E3F6-4F2F-AEA4-AE33FAD34ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{412097CD-E3F6-4F2F-AEA4-AE33FAD34ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2405B33-50BB-4C4D-AA54-1E411AA2B68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2405B33-50BB-4C4D-AA54-1E411AA2B68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2405B33-50BB-4C4D-AA54-1E411AA2B68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2405B33-50BB-4C4D-AA54-1E411AA2B68E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
