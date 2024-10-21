@@ -51,7 +51,7 @@ build cmake_object_order_depends_target_Task04: phony || CMakeFiles/Task04.dir
 
 build CMakeFiles/Task04.dir/main.cpp.o: CXX_COMPILER__Task04_unscanned_Debug /Users/timur/hse/Algorithms/HW2/Task04/main.cpp || cmake_object_order_depends_target_Task04
   DEP_FILE = CMakeFiles/Task04.dir/main.cpp.o.d
-  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -fcolor-diagnostics
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/Task04.dir
   OBJECT_FILE_DIR = CMakeFiles/Task04.dir
   TARGET_COMPILE_PDB = CMakeFiles/Task04.dir/
@@ -66,7 +66,7 @@ build CMakeFiles/Task04.dir/main.cpp.o: CXX_COMPILER__Task04_unscanned_Debug /Us
 # Link the executable Task04
 
 build Task04: CXX_EXECUTABLE_LINKER__Task04_Debug CMakeFiles/Task04.dir/main.cpp.o
-  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk
   OBJECT_DIR = CMakeFiles/Task04.dir
   POST_BUILD = :
   PRE_LINK = :
