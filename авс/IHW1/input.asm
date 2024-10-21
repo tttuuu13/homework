@@ -67,4 +67,3 @@ main:
 	# Print array B
 	print_array a3 a0
 	ret
-	

@@ -210,7 +210,7 @@ main:
 	Enter number: 1
 	Enter number: 2
 	Enter number: 3
-	1 3 
+	[1 3 ]
 	-- program is finished running (0) --
 	```
  * Комментарии на месте
@@ -238,28 +238,27 @@ main:
 	.include "macros.asm"
 	.text
 	config:
-		addi sp sp -8
-		sw s0 (sp)
-		sw s1 4(sp)
-		
-		li a5 0
+		li a5 0 # counter
 		li a6 6 # amount of tests
-		
-		#la t1 array_tests
+	
 		la t2 n_tests
 		la t4 x_tests
 		la a1 array_tests
 	test:
+		# Load data for test
 		lw a2 (t2)
 		la a3 array_b
 		lw a4 (t4)
+		# Run test
 		jal main
 		la a0 new_line
 		li a7 4
 		ecall
+		# Go to the next array
 		li t0 4
 		mul t1 t0 a2
 		add a1 a1 t1
+		# Pick next variable set
 		addi t2 t2 4
 		addi t4 t4 4
 		addi a5 a5 1
@@ -277,7 +276,7 @@ main:
 		li a7 10
 		ecall
 	```
-	Выходные данные для представленных тестов:
+	Выходные данные для представленных тестов совпадают с ожидаемыми:
 	```
 	[1 2 4 5 ]
 	[1 1 1 1 1 1 1 1 1 ]
