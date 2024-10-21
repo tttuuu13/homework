@@ -1,4 +1,5 @@
-# main.asm
+# input.asm
+## Файл для работы при вводе клавиатуры
 ```
 .data
 	array_a: .space 40
@@ -9,7 +10,7 @@
 	input_out_of_range_msg: .asciz "ERROR: input is out of range, restarting the program...\n"
 .include "macros.asm"
 .text
-main:
+handle_input:
 	# Store register's values on stack
 	addi sp sp, -16
 	sw s0 (sp)
@@ -34,16 +35,15 @@ main:
 	mv a0 s0
 	la a1 array_a
 	input_array a1 a0
+	mv s2 a1 # store array_a
 	
-	# Filter array and save to B
-	la a0 array_a
-	mv a1 s0
-	la a2 array_b
-	mv a3 s1
-	filter_array a0 a1 a2 a3 # sets a0 to B's length
+	la s3 array_b # save array_b
 	
-	# Print array B
-	print_array a2 a0
+	mv a1 s2
+	mv a2 s0
+	mv a3 s3
+	mv a4 s1
+	jal main
 	
 	# Restore registers
 	lw s0 (sp)
@@ -57,17 +57,28 @@ input_out_of_range:
 	la a0 input_out_of_range_msg
 	li a7 4
 	ecall
-	j main
+	j handle_input
 
 exit:
 	li a7 10
 	ecall
+
+main:
+	# Save filtered array to B and save B's length to a0
+	filter_array a1 a2 a3 a4
+	
+	# Print array B
+	print_array a3 a0
+	ret
 ```
 # macros.asm
+## Файл с макросами
 ```
 .data
-	enter_number_prompt: .asciz "\nEnter number: "
+	enter_number_prompt: .asciz "Enter number: "
 	whitespace: .asciz " "
+	open_bracket: .asciz "["
+	closing_bracket: .asciz "]"
 
 .macro input_number %prompt
 	# Display prompt
@@ -164,7 +175,10 @@ exit:
 	mv s0 %array_ref
 	li s1 0 # index
 	mv s2 %length
-	
+	la a0 open_bracket
+	li a7 4
+	ecall
+	beqz s2 skip
 	print_loop:
 		lw s3 (s0)
 		mv a0 s3
@@ -176,7 +190,10 @@ exit:
 		addi s1 s1 1
 		addi s0 s0 4
 		blt s1 s2 print_loop
-
+	skip:
+	la a0 closing_bracket
+	li a7 4
+	ecall
 	# Restore registers
 	lw s0 (sp)
 	lw s1 4(sp)
@@ -198,3 +215,82 @@ exit:
 	```
  * Комментарии на месте
  * Тесты будут дальше
+
+# 6 - 7 баллов
+* В программе используются макросы
+
+# 8 баллов
+* Функция main может использоваться отдельно совместно с библиотекой макросов, аргументы передаются с помощью регистров а1...а4
+* Программа для автоматического прогона тестовых данных:
+	```
+	.data
+		array_b: .space 40
+		new_line: .asciz "\n"
+		n_tests: .word 5, 9, 9, 1, 1, 7
+		x_tests: .word 3, 8, 1, 2, 0, 1
+		array_tests: 	.word 1, 2, 3, 4, 5
+				.word 1, 1, 1, 1, 1, 1, 1, 1, 1
+				.word 1, 1, 1, 1, 1, 1, 1, 1, 1
+				.word 3
+				.word 9999999
+				.word 0, 0, 0, 0, 1, 0, 0
+				
+	.include "macros.asm"
+	.text
+	config:
+		addi sp sp -8
+		sw s0 (sp)
+		sw s1 4(sp)
+		
+		li a5 0
+		li a6 6 # amount of tests
+		
+		#la t1 array_tests
+		la t2 n_tests
+		la t4 x_tests
+		la a1 array_tests
+	test:
+		lw a2 (t2)
+		la a3 array_b
+		lw a4 (t4)
+		jal main
+		la a0 new_line
+		li a7 4
+		ecall
+		li t0 4
+		mul t1 t0 a2
+		add a1 a1 t1
+		addi t2 t2 4
+		addi t4 t4 4
+		addi a5 a5 1
+		blt a5 a6 test
+		j exit
+	
+	main:
+		# Save filtered array to B and save B's length to a0
+		filter_array a1 a2 a3 a4
+		
+		# Print array B
+		print_array a3 a0
+		ret
+	exit:
+		li a7 10
+		ecall
+	```
+	Выходные данные для представленных тестов:
+	```
+	[1 2 4 5 ]
+	[1 1 1 1 1 1 1 1 1 ]
+	[]
+	[3 ]
+	[9999999 ]
+	[0 0 0 0 0 0 ]
+	
+	-- program is finished running (0) --
+	```
+# 9 баллов
+* Макросы добавлены и находятся в отдельном файле **macros.asm**
+
+# 10 баллов
+* Программа разбита на несколько файлов, программы для ввода являются унифицированными - принимают промпт в качестве аргумента, записывают входные данные в а0.
+* Макросы вынесены в отдельную библиотеку-файл
