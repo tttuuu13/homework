@@ -187,12 +187,12 @@ exit:
 ```
 # 4 - 5 баллов
 * Решение приведено выше, ввод осуществляется с клавиатуры, вывод осуществляется на дисплей. Пример ввода-вывода программы:
-```
-Please enter N(0 <= N <= 10): 3
-Please enter X: 2
-Enter number: 1
-Enter number: 2
-Enter number: 3
-1 3 
--- program is finished running (0) --
-```
+	```
+	Please enter N(0 <= N <= 10): 3
+	Please enter X: 2
+	Enter number: 1
+	Enter number: 2
+	Enter number: 3
+	1 3 
+	-- program is finished running (0) --
+	```
