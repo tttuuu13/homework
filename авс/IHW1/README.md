@@ -1,5 +1,5 @@
 # main.asm
-```mips
+```Assembly
 .data
 	array_a: .space 40
 	array_b: .space 40
