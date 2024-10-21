@@ -1,5 +1,5 @@
 # main.asm
-```asm
+```riscv
 .data
 	array_a: .space 40
 	array_b: .space 40
