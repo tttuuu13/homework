@@ -1,6 +1,7 @@
 .data
-	enter_number_prompt: .asciz "\nEnter number: "
+	enter_number_prompt: .asciz "Enter number: "
 	whitespace: .asciz " "
+
 .macro input_number %prompt
 	# Display prompt
 	la a0 %prompt
@@ -12,19 +13,26 @@
 .end_macro 
 
 .macro input_array %array_ref %length
+	# Store register's values on stack
 	addi sp sp -12
 	sw s0 (sp)
 	sw s1 4(sp)
 	sw s2 8(sp)
+	
+	# Configure variables
 	li s0 0
 	mv s1 %length
 	mv s2 %array_ref
+	
+	# Read N elements
 	insert_elem:
 		input_number enter_number_prompt
 		sw a0 0(s2)
 		addi s0 s0 1
 		addi s2 s2 4
 		blt s0 s1 insert_elem
+		
+	# Restore registers
 	lw s0 (sp)
 	lw s1 4(sp)
 	lw s2 8(sp)
@@ -32,6 +40,7 @@
 .end_macro
 
 .macro filter_array %source_array_ref %source_length %dest_array_ref %x
+	# Store register's values on stack
 	addi sp sp -28
 	sw s0 (sp)
 	sw s1 4(sp)
@@ -41,12 +50,15 @@
 	sw s5 20(sp)
 	sw s6 24(sp)
 	
+	# Configure variables
 	li s0 0 # source index
 	mv s1 %source_array_ref
 	mv s2 %source_length
 	li s3 0 # destination index
 	mv s4 %dest_array_ref
 	mv s5 %x
+	
+	# Iterate through array
 	loop:
 		lw s6 0(s1)
 		bne s6 s5 not_equal
@@ -59,7 +71,11 @@
 			addi s0 s0 1
 			addi s1 s1 4
 			blt s0 s2 loop
+	
+	# Load destination array's length to a0
 	mv a0 s3
+	
+	# Restore registers
 	lw s0 (sp)
 	lw s1 4(sp)
 	lw s2 8(sp)
@@ -71,6 +87,7 @@
 .end_macro		
 
 .macro print_array %array_ref %length
+	# Store register's values on stack
 	addi sp sp -16
 	sw s0 (sp)
 	sw s1 4(sp)
@@ -92,7 +109,12 @@
 		addi s1 s1 1
 		addi s0 s0 4
 		blt s1 s2 print_loop
+
+	# Restore registers
+	lw s0 (sp)
+	lw s1 4(sp)
+	lw s2 8(sp)
+	lw s3 12(sp)
+	addi sp sp 16
 .end_macro
-		
-	
 	
